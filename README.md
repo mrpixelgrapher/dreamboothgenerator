@@ -5,7 +5,7 @@
 Hey everyone,
 My name is Prakhar Saraswat, you can connect with me on https://twitter.com/Mrpixelgrapher 
 
-So most of the people I've interacted with are as confused as I was before I started running tests on Dreambooth using Shivam's colab which is based on diffusers from hugging space.
+So most of the people I've interacted with are as confused as I was before I started running tests on Dreambooth using Shivam's colab which is based on diffusers implementation for dreambooth base on diffusers from hugging space.
 
 Link to Shivam's colab: https://colab.research.google.com/github/ShivamShrirao/diffusers/blob/main/examples/dreambooth/DreamBooth_Stable_Diffusion.ipynb
 
@@ -42,14 +42,34 @@ Before we get into the results and comparison of different models that I have tr
 
 ## What does overtraining look like?
 
-![m (19)](https://user-images.githubusercontent.com/113246464/194556438-15091a9f-2cac-4599-ad3f-6f789a2c145a.png)
-![download (6)](https://user-images.githubusercontent.com/113246464/194556591-d74a4eb3-90b9-4141-a3a3-21858f3d86c3.png)
+![Capture](https://user-images.githubusercontent.com/113246464/194565511-4f71bf25-987d-47fe-bf93-e3ec4c428310.PNG)
 
-In the above images you can see a burned up look, which is a result of overtrianing.
+These were th eimages from the first model that I trained. In the above images you can see a burned up look, which is a result of overtrianing.
+There are a lot of artifacts and the amount of poses is limited to that of the training image.
 
-To understand at what steps our model should run, what should be the number of training images, I ran these tests:
+To understand how to stop overtraining it was important to figure out the right number of steps and the number of training images, I ran these tests to find out:
 
-> Test 1
-> Number of steps to be used?
+## Test 1: > Number of training images to be used?
+
+So I created three training sets, and trained models (1,2,3 respectively) on:
+- 1st training set containing 6 images (2 headshots, 2 half body shots and 2 full body shots)
+- 2nd training set containing 26 images (10 headshots, 10 half body shots, 6 full body shots)
+- 3rd training set containing 20 images (4 headshots, 11 half body shots, 5 full body shots)
+
+The settings for these models were kept constant:
+Instance name: Prakhar1/2/3
+Class Name: People
+Reg img no.: 12
+Training: 800 steps for 1st set 1200 for 2nd and 3rd 
 
 
+The results from these tests were tested against these prompts:
+```sh
+1. portrait of {_}, 8k
+2. Film still of {_} as doctor strange in avengers endgame
+3. Incredible portrait of {_}, artstation winner by Victo Ngai, Kilian Eng and by Jake Parker, swirly vibrant color lines, winning-award masterpiece, fantastically gaudy, aesthetic octane render, 8K HD Resolution
+4. half body portrait of {_} in a red black tuxedo, highly detailed, digital painting, art by greg rutkowski, 8k
+5. {_}, white and multicolored hair, surrounded by flowers, cosmic background, realistic shaded perfect face, fine details by realistic shaded lighting poster by ilya kuvshinov katsuhiro otomo, magali villeneuve, artgerm, jeremy lipkin and michael garmash and rob rey
+```
+
+The results from the first model:
