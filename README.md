@@ -10,6 +10,16 @@ So most of the people I've interacted with are as confused as I was before I sta
 Link to Shivam's colab: https://colab.research.google.com/github/ShivamShrirao/diffusers/blob/main/examples/dreambooth/DreamBooth_Stable_Diffusion.ipynb
 
 
+If you want TL;DR version, these are the settings that worked for me and can act as a good starting point for you:
+- Instance name: [Any Token Name]
+- Class Name: Man
+- num_class_images/Reg img no.= 20
+- max_train_steps= 1600
+- custom DDIM images as reg images
+
+
+BONUS TIP: Use this tool to copy your models from one google drive account to another (backup drive): https://script.google.com/macros/s/AKfycbxbGNGajrxv-HbX2sVY2OTu7yj9VvxlOMOeQblZFuq7rYm7uyo/exec?pli=1
+
 
 Before we get into the results and comparison of different models that I have trained, let's start with basic nomenclature of terms so that this guide makes more sense. Once, you open the Colab you are greeted with terms that might be confusing and it's hard to assimilate on how they will affect your model per se. 
 
@@ -44,8 +54,8 @@ Before we get into the results and comparison of different models that I have tr
 
 ![Capture](https://user-images.githubusercontent.com/113246464/194565511-4f71bf25-987d-47fe-bf93-e3ec4c428310.PNG)
 
-These were th eimages from the first model that I trained. In the above images you can see a burned up look, which is a result of overtrianing.
-There are a lot of artifacts and the amount of poses is limited to that of the training image.
+These were the iimages from the first model that I trained. In the above images you can see a burned up look, which is a result of overtrianing.
+There are a lot of artifacts and the amount of poses is limited to that of the training image. Soemtimes, even copies of your subject shows up.
 
 To understand how to stop overtraining it was important to figure out the right number of steps and the number of training images, I ran these tests to find out:
 
@@ -53,7 +63,7 @@ To understand how to stop overtraining it was important to figure out the right 
 
 So I created three training sets, and trained models (1,2,3 respectively) on:
 - 1st training set containing 6 images (2 headshots, 2 half body shots and 2 full body shots)
-- 2nd training set containing 26 images (10 headshots, 10 half body shots, 6 full body shots)
+- 2nd training set containing 24 images (10 headshots, 8 half body shots, 6 full body shots)
 - 3rd training set containing 20 images (4 headshots, 11 half body shots, 5 full body shots)
 
 These settings for these models were kept constant:
@@ -72,6 +82,7 @@ The results from these tests were tested against these prompts:
 5. {_}, white and multicolored hair, surrounded by flowers, cosmic background, realistic shaded perfect face, fine details by realistic shaded lighting poster by ilya kuvshinov katsuhiro otomo, magali villeneuve, artgerm, jeremy lipkin and michael garmash and rob rey
 6. portrait of {_}, aesthetic octane render, 8K HD Resolution
 ```
+NOTE: Only the best result from the 10 generations per prompt is being showcased! Most of the images from first and second model were mediocre. 
 
 ## The results from the first model:
 
@@ -86,9 +97,21 @@ This model's generations are decent coherence wise, good for digital artstyle ty
 
 ## The results from the 2nd model:
 
-Training steps: 1200
-Training images: 26
+Training steps: 2020
+Training images: 24
 
 
 ![Capture](https://user-images.githubusercontent.com/113246464/194621047-9df821f2-40ef-41cc-ad58-205dcd2bea1b.PNG)
 
+This model was pretty versatile in the type of different compositions that were generated and has really good detail level, but in a lot of ways the face structure between different style wasn't coherent. At best this model had a sense of my resemblance but had too many training images with so much variety that it understood my face structure as maybe not a fixed thing.
+
+
+## The results from the 3rd model:
+
+Training steps: 1500
+Training images: 20
+
+
+![Capture](https://user-images.githubusercontent.com/113246464/194624546-fcf0eedc-4b03-4e53-a5af-841e186f76b7.PNG)
+
+Oh boy! This turned out darn good, with usually really good resemblance to me in all the different prompts as well as different compositions. It was good to know at this point that 20 training set and it's composition was the way to go.
