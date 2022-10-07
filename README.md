@@ -56,12 +56,11 @@ So I created three training sets, and trained models (1,2,3 respectively) on:
 - 2nd training set containing 26 images (10 headshots, 10 half body shots, 6 full body shots)
 - 3rd training set containing 20 images (4 headshots, 11 half body shots, 5 full body shots)
 
-The settings for these models were kept constant:
+These settings for these models were kept constant:
 
-Instance name: Prakhar1/2/3
-Class Name: People
-Reg img no.: 12
-Training: 800 steps for 1st set 1200 for 2nd and 3rd 
+- Instance name: Prakhar1/2/3
+- Class Name: People
+- Reg img no.: 12
 
 
 The results from these tests were tested against these prompts:
@@ -71,6 +70,25 @@ The results from these tests were tested against these prompts:
 3. Incredible portrait of {_}, artstation winner by Victo Ngai, Kilian Eng and by Jake Parker, swirly vibrant color lines, winning-award masterpiece, fantastically gaudy, aesthetic octane render, 8K HD Resolution
 4. half body portrait of {_} in a red black tuxedo, highly detailed, digital painting, art by greg rutkowski, 8k
 5. {_}, white and multicolored hair, surrounded by flowers, cosmic background, realistic shaded perfect face, fine details by realistic shaded lighting poster by ilya kuvshinov katsuhiro otomo, magali villeneuve, artgerm, jeremy lipkin and michael garmash and rob rey
+6. portrait of {_}, aesthetic octane render, 8K HD Resolution
 ```
 
-The results from the first model:
+## The results from the first model:
+
+Training steps: 800
+Training images: 6
+
+ 
+![Capture](https://user-images.githubusercontent.com/113246464/194619503-a5da6ab1-4b84-4161-a9e5-42a53d3d01b5.PNG)
+
+This model's generations are decent coherence wise, good for digital artstyle type of results but not that great when it comes to photorealistic results. The training time was really less with just 800 steps and 6 images, showing that you can get decent results even with a smaller training set, though the face profile and composition of the generation frames in between different prompts, still looks nearly similar.
+
+
+## The results from the 2nd model:
+
+Training steps: 1200
+Training images: 26
+
+
+![Capture](https://user-images.githubusercontent.com/113246464/194621047-9df821f2-40ef-41cc-ad58-205dcd2bea1b.PNG)
+
