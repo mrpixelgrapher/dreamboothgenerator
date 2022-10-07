@@ -57,6 +57,7 @@ So I created three training sets, and trained models (1,2,3 respectively) on:
 - 3rd training set containing 20 images (4 headshots, 11 half body shots, 5 full body shots)
 
 The settings for these models were kept constant:
+
 Instance name: Prakhar1/2/3
 Class Name: People
 Reg img no.: 12
