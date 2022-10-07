@@ -1,4 +1,4 @@
-# dreamboothgenerator
+# Dreambooth Diffuser Guide
 use this repoistory to understand different settings for you trained model using diffusers
 
 
