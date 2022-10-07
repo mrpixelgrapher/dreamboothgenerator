@@ -13,7 +13,7 @@ Link to Shivam's colab: https://colab.research.google.com/github/ShivamShrirao/d
 
 Before we get into the results and comparison of different models that I have trained, let's start with basic nomenclature of terms so that this guide makes more sense. Once, you open the Colab you are greeted with terms that might be confusing and it's hard to assimilate on how they will affect your model per se. 
 
-##So here are some important terms:
+## Important terms to understand this guide:
 
 - 1. INSTANCE_DIR: This is the directory where you model will download all the dependencies that it needs to run.
 - 2. OUTPUT_DIR: is the drive location where your model will get saved.
@@ -38,5 +38,18 @@ Before we get into the results and comparison of different models that I have tr
 - 3. instance_prompt= is used to define your token/instance for a comparison with class prompt.
 - 4. class_prompt: This is used as the prompt to generate the reg images.
 - 5. seed: This is the seed setting that will be used by default to generate reg images based on your class prompt.
+
+
+## What does overtraining look like?
+
+![m (19)](https://user-images.githubusercontent.com/113246464/194556438-15091a9f-2cac-4599-ad3f-6f789a2c145a.png)
+![download (6)](https://user-images.githubusercontent.com/113246464/194556591-d74a4eb3-90b9-4141-a3a3-21858f3d86c3.png)
+
+In the above images you can see a burned up look, which is a result of overtrianing.
+
+To understand at what steps our model should run, what should be the number of training images, I ran these tests:
+
+> Test 1
+> Number of steps to be used?
 
 
