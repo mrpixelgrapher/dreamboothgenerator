@@ -3,18 +3,19 @@
 
 
 Hey everyone,
-My name is Prakhar Saraswat, you can connect with me on https://twitter.com/Mrpixelgrapher 
+My name is Prakhar Saraswat, you can connect with me on [Twitter](https://twitter.com/Mrpixelgrapher) 
 
 So most of the people I've interacted with are as confused as I was before I started running tests on Dreambooth using Shivam's colab which is based on diffusers implementation for dreambooth base on diffusers from hugging space.
 
-Link to Shivam's colab: https://colab.research.google.com/github/ShivamShrirao/diffusers/blob/main/examples/dreambooth/DreamBooth_Stable_Diffusion.ipynb
+Link to Shivam's colab: [Link](https://colab.research.google.com/github/ShivamShrirao/diffusers/blob/main/examples/dreambooth/DreamBooth_Stable_Diffusion.ipynb)
 
 
 If you want TL;DR version, these are the settings that worked for me and can act as a good starting point for you:
 - Instance name: [Any Token Name]
+- training set containing 20 images (4 headshots, 11 half body shots, 5 full body shots)
 - Class Name: Man
 - num_class_images/Reg img no.= 20
-- max_train_steps= 1600
+- max_train_steps= 1400-1600
 - custom DDIM images as reg images
 
 
@@ -108,7 +109,7 @@ Training images: 24
 This model was pretty versatile in the type of different compositions that were generated and has really good detail level, but in a lot of ways the face structure between different style wasn't coherent. At best this model had a sense of my resemblance but had too many training images with so much variety that it understood my face structure as maybe not a fixed thing.
 
 ------
-## The results from the 3rd model:
+### The results from the 3rd model:
 
 Training steps: 1500
 Training images: 20
@@ -117,5 +118,55 @@ Training images: 20
 ![Capture](https://user-images.githubusercontent.com/113246464/194624546-fcf0eedc-4b03-4e53-a5af-841e186f76b7.PNG)
 
 Oh boy! This turned out darn good, with usually really good resemblance to me in all the different prompts as well as different compositions. It was good to know at this point that 20 training set and it's composition was the way to go.
+======
+
+## The Next step was to figure out and fine tune the number of steps for our model
+
+The key thing to understand here is that if you have a simple looking subject (Which doesn't have hair or fur) for eg anime characters or a non living object, you need to target 40-60 repeats and for complex things like human being 60-80 repeats.
+```sh
+Since the formula for training training is:
+training photos * repeats = steps
+```
+
+I decided to again go for three model testing.
+
+Step one was to fixiate the variables like our previous test.
+
+These settings for these models were kept constant:
+
+- Instance name: Prak1/2/3
+- Class Name: Man
+- Reg img no.: 12
+- Training images (based on our previous test):  20
+------
+
+To decided on what step anges to test, I instead of going with the above formula I went with multiple macro ranges (I wasn't aware of the formula back then)
+
+### The results from the first model:
+
+Training steps: 800
+
+ 
+![Capture](https://user-images.githubusercontent.com/113246464/194619503-a5da6ab1-4b84-4161-a9e5-42a53d3d01b5.PNG)
+
+This model's generations are decent coherence wise, good for digital artstyle type of results but not that great when it comes to photorealistic results. The training time was really less with just 800 steps and 6 images, showing that you can get decent results even with a smaller training set, though the face profile and composition of the generation frames in between different prompts, still looks nearly similar.
 
 ------
+### The results from the 2nd model:
+
+Training steps: 2020
+
+
+![Capture](https://user-images.githubusercontent.com/113246464/194621047-9df821f2-40ef-41cc-ad58-205dcd2bea1b.PNG)
+
+This model was pretty versatile in the type of different compositions that were generated and has really good detail level, but in a lot of ways the face structure between different style wasn't coherent. At best this model had a sense of my resemblance but had too many training images with so much variety that it understood my face structure as maybe not a fixed thing.
+
+------
+### The results from the 3rd model:
+
+Training steps: 1500
+
+
+![Capture](https://user-images.githubusercontent.com/113246464/194624546-fcf0eedc-4b03-4e53-a5af-841e186f76b7.PNG)
+
+Oh boy! This turned out darn good, with usually really good resemblance to me in all the different prompts as well as different compositions. It was good to know at this point that 20 training set and it's composition was the way to go.
