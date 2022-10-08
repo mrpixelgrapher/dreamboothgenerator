@@ -96,7 +96,7 @@ Training images: 6
 
 This model's generations are decent coherence wise, good for digital artstyle type of results but not that great when it comes to photorealistic results. The training time was really less with just 800 steps and 6 images, showing that you can get decent results even with a smaller training set, though the face profile and composition of the generation frames in between different prompts, still looks nearly similar.
 
-
+------
 ### The results from the 2nd model:
 
 Training steps: 2020
@@ -107,7 +107,7 @@ Training images: 24
 
 This model was pretty versatile in the type of different compositions that were generated and has really good detail level, but in a lot of ways the face structure between different style wasn't coherent. At best this model had a sense of my resemblance but had too many training images with so much variety that it understood my face structure as maybe not a fixed thing.
 
-
+------
 ## The results from the 3rd model:
 
 Training steps: 1500
