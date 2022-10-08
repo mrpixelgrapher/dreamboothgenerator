@@ -50,7 +50,7 @@ Before we get into the results and comparison of different models that I have tr
 - 4. class_prompt: This is used as the prompt to generate the reg images.
 - 5. seed: This is the seed setting that will be used by default to generate reg images based on your class prompt.
 
-
+------
 ## What does overtraining look like?
 
 ![Capture](https://user-images.githubusercontent.com/113246464/194565511-4f71bf25-987d-47fe-bf93-e3ec4c428310.PNG)
@@ -58,9 +58,10 @@ Before we get into the results and comparison of different models that I have tr
 These were the iimages from the first model that I trained. In the above images you can see a burned up look, which is a result of overtrianing.
 There are a lot of artifacts and the amount of poses is limited to that of the training image. Soemtimes, even copies of your subject shows up.
 
+------
 To understand how to stop overtraining it was important to figure out the right number of steps and the number of training images, I ran these tests to find out:
 
-## Test 1: > Number of training images to be used?
+### Test 1: > Number of training images to be used?
 
 So I created three training sets, and trained models (1,2,3 respectively) on:
 - 1st training set containing 6 images (2 headshots, 2 half body shots and 2 full body shots)
@@ -85,7 +86,7 @@ The results from these tests were tested against these prompts:
 ```
 NOTE: Only the best result from the 10 generations per prompt is being showcased! Most of the images from first and second model were mediocre. 
 
-## The results from the first model:
+### The results from the first model:
 
 Training steps: 800
 Training images: 6
@@ -96,7 +97,7 @@ Training images: 6
 This model's generations are decent coherence wise, good for digital artstyle type of results but not that great when it comes to photorealistic results. The training time was really less with just 800 steps and 6 images, showing that you can get decent results even with a smaller training set, though the face profile and composition of the generation frames in between different prompts, still looks nearly similar.
 
 
-## The results from the 2nd model:
+### The results from the 2nd model:
 
 Training steps: 2020
 Training images: 24
@@ -116,3 +117,5 @@ Training images: 20
 ![Capture](https://user-images.githubusercontent.com/113246464/194624546-fcf0eedc-4b03-4e53-a5af-841e186f76b7.PNG)
 
 Oh boy! This turned out darn good, with usually really good resemblance to me in all the different prompts as well as different compositions. It was good to know at this point that 20 training set and it's composition was the way to go.
+
+------
