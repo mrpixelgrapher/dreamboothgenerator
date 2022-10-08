@@ -19,7 +19,7 @@ If you want TL;DR version, these are the settings that worked for me and can act
 - custom DDIM images as reg images
 
 
-BONUS TIP: Use this tool to copy your models from one google drive account to another (backup drive): https://script.google.com/macros/s/AKfycbxbGNGajrxv-HbX2sVY2OTu7yj9VvxlOMOeQblZFuq7rYm7uyo/exec?pli=1
+BONUS TIP: Use this tool to copy your models from one google drive account to another (backup drive): [TOOL LINK](https://script.google.com/macros/s/AKfycbxbGNGajrxv-HbX2sVY2OTu7yj9VvxlOMOeQblZFuq7rYm7uyo/exec?pli=1)
 
 
 Before we get into the results and comparison of different models that I have trained, let's start with basic nomenclature of terms so that this guide makes more sense. Once, you open the Colab you are greeted with terms that might be confusing and it's hard to assimilate on how they will affect your model per se. 
@@ -120,6 +120,12 @@ Training images: 20
 Oh boy! This turned out darn good, with usually really good resemblance to me in all the different prompts as well as different compositions. It was good to know at this point that 20 training set and it's composition was the way to go.
 ======
 
+
+So Moving forward, I fixed my training image dataset and it looked like this:
+
+![Capture](https://user-images.githubusercontent.com/113246464/194706943-97d62cc3-dc4b-48e7-bf71-ba335ba637fb.PNG)
+
+
 ## The Next step was to figure out and fine tune the number of steps for our model
 
 The key thing to understand here is that if you have a simple looking subject (Which doesn't have hair or fur) for eg anime characters or a non living object, you need to target 40-60 repeats and for complex things like human being 60-80 repeats.
@@ -135,19 +141,35 @@ Step one was to fixiate the variables like our previous test.
 These settings for these models were kept constant:
 
 - Instance name: Prak1/2/3
-- Class Name: Man
+- Class Name: Guy/Man (went more specific then person in the last test)
 - Reg img no.: 12
 - Training images (based on our previous test):  20
 ------
 
 To decided on what step anges to test, I instead of going with the above formula I went with multiple macro ranges (I wasn't aware of the formula back then)
 
+So I created three training sets, and trained models (1,2,3 respectively) on:
+- 1st training model: 1200 
+- 2nd training model: 1400
+- 3rd training model: 1600
+
+The results from these tests were tested against these prompts:
+```sh
+1. portrait of {_}, 8k
+2. portrait of {_}, aesthetic octane render, 8K HD Resolution
+3. Incredible portrait of {_}, artstation winner by Victo Ngai, Kilian Eng and by Jake Parker, swirly vibrant color lines, winning-award masterpiece, fantastically gaudy, aesthetic octane render, 8K HD Resolution
+4. half body portrait of {_} in a red black tuxedo, highly detailed, digital painting, art by greg rutkowski, 8k
+
+```
+
 ### The results from the first model:
 
 Training steps: 800
+Class: guy
 
  
-![Capture](https://user-images.githubusercontent.com/113246464/194619503-a5da6ab1-4b84-4161-a9e5-42a53d3d01b5.PNG)
+![Capture](https://user-images.githubusercontent.com/113246464/194707185-7cb77df8-ff8b-4467-afea-d338bfcc2e7e.PNG)
+
 
 This model's generations are decent coherence wise, good for digital artstyle type of results but not that great when it comes to photorealistic results. The training time was really less with just 800 steps and 6 images, showing that you can get decent results even with a smaller training set, though the face profile and composition of the generation frames in between different prompts, still looks nearly similar.
 
@@ -157,7 +179,7 @@ This model's generations are decent coherence wise, good for digital artstyle ty
 Training steps: 2020
 
 
-![Capture](https://user-images.githubusercontent.com/113246464/194621047-9df821f2-40ef-41cc-ad58-205dcd2bea1b.PNG)
+![Capture
 
 This model was pretty versatile in the type of different compositions that were generated and has really good detail level, but in a lot of ways the face structure between different style wasn't coherent. At best this model had a sense of my resemblance but had too many training images with so much variety that it understood my face structure as maybe not a fixed thing.
 
@@ -167,6 +189,6 @@ This model was pretty versatile in the type of different compositions that were 
 Training steps: 1500
 
 
-![Capture](https://user-images.githubusercontent.com/113246464/194624546-fcf0eedc-4b03-4e53-a5af-841e186f76b7.PNG)
+![Capture
 
 Oh boy! This turned out darn good, with usually really good resemblance to me in all the different prompts as well as different compositions. It was good to know at this point that 20 training set and it's composition was the way to go.
