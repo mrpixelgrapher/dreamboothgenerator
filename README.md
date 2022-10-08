@@ -23,6 +23,7 @@ BONUS TIP: Use this tool to copy your models from one google drive account to an
 
 Before we get into the results and comparison of different models that I have trained, let's start with basic nomenclature of terms so that this guide makes more sense. Once, you open the Colab you are greeted with terms that might be confusing and it's hard to assimilate on how they will affect your model per se. 
 
+------
 ## Important terms to understand this guide:
 
 - 1. INSTANCE_DIR: This is the directory where you model will download all the dependencies that it needs to run.
